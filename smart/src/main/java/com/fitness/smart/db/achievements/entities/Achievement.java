@@ -16,7 +16,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="progress")
+@Table(name="achievements")
 public class Achievement {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY )

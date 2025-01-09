@@ -7,6 +7,7 @@ import com.fitness.smart.db.achievements.entities.Achievement;
 import com.fitness.smart.db.client.enm.EnumClient.EnumGender;
 import com.fitness.smart.db.favorites.entities.Favorite;
 import com.fitness.smart.db.schedule.entities.Schedule;
+import com.fitness.smart.db.workouts.entities.Workout;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -43,6 +44,10 @@ public class Client {
     @OneToOne
     @JoinColumn(name="client_id")
     private Favorite favorite;
+
+    @OneToMany
+    @JoinColumn(name="client_id")
+    private List<Workout> workouts;
 
     public Client() {
         this.schedules=new ArrayList<>();
@@ -111,6 +116,14 @@ public class Client {
 
     public void setFavorite(Favorite favorite) {
         this.favorite = favorite;
+    }
+
+    public List<Workout> getWorkouts() {
+        return workouts;
+    }
+
+    public void setWorkouts(List<Workout> workouts) {
+        this.workouts = workouts;
     }
 
     

@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,6 +30,9 @@ public class Favorite {
     )
     private List<Workout> workouts;
 
+    @OneToOne
+    private Favorite favorite;
+    
     public Favorite() {
         this.workouts=new ArrayList<>();
     }
@@ -47,6 +51,14 @@ public class Favorite {
 
     public void setWorkouts(List<Workout> workouts) {
         this.workouts = workouts;
+    }
+
+    public Favorite getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Favorite favorite) {
+        this.favorite = favorite;
     }
 
     
