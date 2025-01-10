@@ -3,6 +3,7 @@ package com.fitness.smart.db.favorites.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fitness.smart.db.client.entities.Client;
 import com.fitness.smart.db.workouts.entities.Workout;
 
 import jakarta.persistence.Entity;
@@ -31,7 +32,8 @@ public class Favorite {
     private List<Workout> workouts;
 
     @OneToOne
-    private Favorite favorite;
+    @JoinColumn(name="client_id")
+    private Client client;
     
     public Favorite() {
         this.workouts=new ArrayList<>();
@@ -53,14 +55,12 @@ public class Favorite {
         this.workouts = workouts;
     }
 
-    public Favorite getFavorite() {
-        return favorite;
+    public Client getClient() {
+        return client;
     }
 
-    public void setFavorite(Favorite favorite) {
-        this.favorite = favorite;
+    public void setClient(Client client) {
+        this.client = client;
     }
-
-    
 
 }

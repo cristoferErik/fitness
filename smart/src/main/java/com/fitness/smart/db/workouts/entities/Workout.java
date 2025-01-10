@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fitness.smart.db.exercises.entities.Exercise;
-import com.fitness.smart.db.workouts.enm.EnumWorkout;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,13 +16,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="workouts")
-public class Workout { 
+public class Workout {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY )
     private Long id;
     private String name;
     private String description;
-    private EnumWorkout.EnumCategory category;
 
     @ManyToMany
     @JoinTable(
@@ -60,15 +58,6 @@ public class Workout {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public EnumWorkout.EnumCategory getCategory() {
-        return category;
-    }
-
-    public void setCategory(EnumWorkout.EnumCategory category) {
-        this.category = category;
-    }
-
     public List<Exercise> getExercises() {
         return exercises;
     }

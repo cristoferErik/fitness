@@ -41,13 +41,12 @@ public class Client {
     @JoinColumn(name="client_id")
     private List<Achievement> achievements;
 
-    @OneToOne
-    @JoinColumn(name="client_id")
-    private Favorite favorite;
-
     @OneToMany
     @JoinColumn(name="client_id")
     private List<Workout> workouts;
+
+    @OneToOne(mappedBy="client")
+    private Favorite favorite;
 
     public Client() {
         this.schedules=new ArrayList<>();
@@ -110,20 +109,20 @@ public class Client {
         this.achievements = achievements;
     }
 
-    public Favorite getFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(Favorite favorite) {
-        this.favorite = favorite;
-    }
-
     public List<Workout> getWorkouts() {
         return workouts;
     }
 
     public void setWorkouts(List<Workout> workouts) {
         this.workouts = workouts;
+    }
+
+    public Favorite getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Favorite favorite) {
+        this.favorite = favorite;
     }
 
     
